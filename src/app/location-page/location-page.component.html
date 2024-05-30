@@ -1,0 +1,9 @@
+<h1>Leírás</h1>
+<div>{{ data[currentAnswerIndex].description }}</div>
+<h1>Válasz</h1>
+<input type="text" [(ngModel)]="answer" />
+<button (click)="checkAnswer()">Beküld</button>
+<div [hidden]="!isCorrectAnswer">
+  <div>Jó válasz!</div>
+  <button (click)="moveForward()">Tovább</button>
+</div>
