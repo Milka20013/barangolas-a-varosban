@@ -1,0 +1,30 @@
+<div>
+  <h1>Leírás</h1>
+  <div>{{ question.description }}</div>
+  <div [hidden]="!question.answer">
+    <h1>Válasz</h1>
+    <input (keydown.enter)="checkAnswer()" type="text" [(ngModel)]="answer" />
+    <button (click)="checkAnswer()">Beküld</button>
+    <div [hidden]="!isCorrectAnswer">
+      <div>Jó válasz!</div>
+      <button (click)="moveForward()">Tovább</button>
+    </div>
+    <div [hidden]="!showIncorrectAnswerText">
+      <div>Rossz válasz.</div>
+      <div>{{ getHelpRemainingText() }}</div>
+    </div>
+  </div>
+  <div [hidden]="question.answer">
+    <button (click)="moveForward()">Tovább</button>
+  </div>
+</div>
+<div [hidden]="!question.answer || !question.help">
+  <button
+    [hidden]="this.shouldHideHelp()"
+    [disabled]="!this.isHelpEnabled"
+    (click)="getHelp()"
+  >
+    Segítség
+  </button>
+  <div *ngFor="let help of this.displayedHelps">{{ help }}</div>
+</div>

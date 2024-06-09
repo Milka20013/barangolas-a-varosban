@@ -1,0 +1,5 @@
+<div [hidden]="dataProvider.getTeamId() !== -1">
+  <h1>Add meg a csapatod számát!</h1>
+  <input type="number" [(ngModel)]="teamId" />
+  <button (click)="registerTeam()">Beküld</button>
+</div>

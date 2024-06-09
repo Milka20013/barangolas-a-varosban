@@ -1,35 +1,12 @@
-<div [hidden]="this.initialStation !== -1">
-  <h1>Add meg a csoportodat!</h1>
-  <input
-    (keydown.enter)="setInitialStation()"
-    type="number"
-    id="initialStation"
-  />
-  <button (click)="setInitialStation()">Beküld</button>
-</div>
-<div [hidden]="this.initialStation === -1 || this.initialDestinationReached">
-  <div>{{ this.getInitialDescription() }}</div>
-  <button (click)="this.initialDestinationReached = true">
-    Elértem a célt!
-  </button>
-</div>
-<div [hidden]="!this.initialDestinationReached">
-  <div>
-    <h1>Leírás</h1>
-    <div>{{ this.getCurrentQuestion() }}</div>
-    <h1>Válasz</h1>
-    <input (keydown.enter)="checkAnswer()" type="text" [(ngModel)]="answer" />
-    <button (click)="checkAnswer()">Beküld</button>
-    <div [hidden]="!isCorrectAnswer">
-      <div>Jó válasz!</div>
-      <button (click)="moveForward()">Tovább</button>
-    </div>
-    <div [hidden]="!showIncorrectAnswerText">
-      <div>Rossz válasz.</div>
-      <div>{{ getHelpRemainingText() }}</div>
-    </div>
-  </div>
-
-  <button [disabled]="!this.isHelpEnabled" (click)="getHelp()">Segítség</button>
-  <div *ngFor="let help of helps">{{ help }}</div>
+<div>
+  <h1>Leírás</h1>
+  <div>{{ this.locationData.baseDescription }}</div>
+  <h1>Érdekesség</h1>
+  <div>{{ this.locationData.curiosity }}</div>
+  <app-question
+    *ngFor="let question of this.locationData.questions; index as i"
+    [question]="question"
+    [hidden]="i !== this.questionIndex"
+    (onCorrectAnswer)="onCorrectAnswerSent()"
+  ></app-question>
 </div>

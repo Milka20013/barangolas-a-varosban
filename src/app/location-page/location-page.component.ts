@@ -1,143 +1,42 @@
-import { Component } from '@angular/core';
-import * as db from './data';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { LocationData, LocationDatas } from './location.data';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuestionComponent } from '../question/question.component';
+import { DataProviderService } from '../data-provider.service';
 
 @Component({
   selector: 'app-location-page',
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor, QuestionComponent],
   templateUrl: './location-page.component.html',
   styleUrl: './location-page.component.css',
 })
-export class LocationPageComponent {
-  public locationDatas = db.locationDatas;
-  public initialDescriptions = db.initialDescriptions;
-  public paths = db.paths;
+export class LocationPageComponent implements OnInit {
+  public locationData: LocationData = LocationDatas[0];
+  public questionIndex: number = 0;
+  router = inject(Router);
+  route = inject(ActivatedRoute);
 
-  public isCorrectAnswer: boolean = false;
-  public showIncorrectAnswerText: boolean = false;
+  dataService = inject(DataProviderService);
 
-  public currentAnswerIndex: number = 0;
-  public currentAttempts: number = 0;
-  public currentHelpIndex: number = -1;
-  public isHelpEnabled = false;
-  public helps: string[] = [];
-
-  public answer: string = '';
-  public initialStation: number = -1;
-  public initialDestinationReached: boolean = false;
-
-  public finalStationReached: boolean = false;
-
-  public checkAnswer() {
-    let locationData = this.getCurrentLocationData();
-    if (locationData?.answer === this.answer) {
-      this.onCorrectAnswerSent();
-    } else {
-      this.incrementAttempts();
-      this.showIncorrectAnswerText = true;
-      setTimeout(() => {
-        this.showIncorrectAnswerText = false;
-      }, 5000);
-    }
-  }
-
-  onCorrectAnswerSent() {
-    let path = this.getPathForGroup();
-    if (!path) {
+  ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      console.log('NINCS ID');
       return;
     }
-    this.isCorrectAnswer = true;
-    this.showIncorrectAnswerText = false;
-    this.isHelpEnabled = false;
-    this.helps = [];
-    this.currentAttempts = 0;
-    if (this.currentAnswerIndex >= path?.path.length) {
-      this.finalStationReached = true;
-    }
+    this.locationData = LocationDatas.find((x) => x.id === +id!)!;
   }
 
-  private incrementAttempts() {
-    this.currentAttempts++;
-    if (this.currentAttempts >= 2) {
-      this.isHelpEnabled = true;
-    }
-  }
-
-  public getHelpRemainingText() {
-    if (this.currentAttempts < 2) {
-      return `A következő rossz válasz után segítség érhető el.`;
-    }
-    return 'Segítség elérhető!';
-  }
-  public getHelp() {
-    if (!this.isHelpEnabled) {
+  public onCorrectAnswerSent() {
+    this.questionIndex++;
+    if (this.locationData.questions.length === this.questionIndex) {
+      this.router.navigate([
+        'inbetween/' + (this.dataService.getInbetweenIndex() + 1),
+      ]);
       return;
     }
-    this.currentHelpIndex++;
-    let locationData = this.getCurrentLocationData();
-    if (!locationData) {
-      this.currentAnswerIndex--;
-      return;
-    }
-    this.showIncorrectAnswerText = false;
-    this.currentAttempts = 0;
-    this.isHelpEnabled = false;
-    this.helps.push(locationData?.helps[this.currentHelpIndex]);
-  }
-
-  public moveForward() {
-    this.isCorrectAnswer = false;
-    this.currentAnswerIndex++;
-    this.answer = '';
-  }
-
-  public setInitialStation() {
-    let value = (document.getElementById('initialStation') as HTMLInputElement)
-      .value;
-    if (!value) {
-      value = '-1';
-    }
-    let num = +value;
-    if (!this.checkIfGroupExists(num)) {
-      return;
-    }
-    this.initialStation = num;
-  }
-
-  public getInitialDescription() {
-    return this.initialDescriptions.find((x) => x.id === this.initialStation)
-      ?.description;
-  }
-
-  public getCurrentLocationData() {
-    let path = this.getPathForGroup();
-    let locationData = this.locationDatas.find(
-      (x) => x.id === path?.path[this.currentAnswerIndex]
-    );
-    return locationData;
-  }
-  public getCurrentQuestion() {
-    let locationData = this.getCurrentLocationData();
-    return locationData?.description;
-  }
-
-  public getPathForGroup() {
-    return this.paths.find((x) => x.initialStation === this.initialStation);
-  }
-
-  checkIfGroupExists(value: number): boolean {
-    let guard: number[] = this.arrayRange(0, this.locationDatas.length, 1);
-    if (!guard.includes(+value)) {
-      return false;
-    }
-    return true;
-  }
-  arrayRange(start: number, stop: number, step: number) {
-    return Array.from(
-      { length: (stop - start) / step + 1 },
-      (value, index) => start + index * step
-    );
   }
 }
