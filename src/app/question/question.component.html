@@ -1,30 +1,42 @@
 <div>
-  <h1>Leírás</h1>
-  <div>{{ question.description }}</div>
+  <h1 style="color: orange">Leírás</h1>
+  <div style="white-space: pre-wrap; tab-size: 4">
+    {{ question.description }}
+  </div>
   <div [hidden]="!question.answer">
-    <h1>Válasz</h1>
-    <input (keydown.enter)="checkAnswer()" type="text" [(ngModel)]="answer" />
-    <button (click)="checkAnswer()">Beküld</button>
-    <div [hidden]="!isCorrectAnswer">
-      <div>Jó válasz!</div>
-      <button (click)="moveForward()">Tovább</button>
+    <h1 style="color: rgb(254, 186, 60)">Válasz</h1>
+    <div class="w-div">
+      <input (keydown.enter)="checkAnswer()" type="text" [(ngModel)]="answer" />
+      <app-generic-button (click)="checkAnswer()" [hidden]="isCorrectAnswer"
+        >Beküld</app-generic-button
+      >
+    </div>
+
+    <div [hidden]="!isCorrectAnswer" class="w-div">
+      <div style="margin: 5px">Jó válasz!</div>
+      <app-generic-button (click)="moveForward()">Tovább</app-generic-button>
     </div>
     <div [hidden]="!showIncorrectAnswerText">
-      <div>Rossz válasz.</div>
-      <div>{{ getHelpRemainingText() }}</div>
+      <div style="margin: 5px">Rossz válasz.</div>
+      <div [hidden]="!isHelpEnabled" style="white-space: pre-wrap; tab-size: 4">
+        {{ getHelpRemainingText() }}
+      </div>
     </div>
   </div>
-  <div [hidden]="question.answer">
-    <button (click)="moveForward()">Tovább</button>
+  <div [hidden]="question.answer" class="w-div">
+    <app-generic-button (click)="moveForward()">Tovább</app-generic-button>
   </div>
 </div>
-<div [hidden]="!question.answer || !question.help">
-  <button
+<div
+  class="w-div"
+  [hidden]="!question.answer || !question.help || isCorrectAnswer"
+>
+  <app-generic-button
     [hidden]="this.shouldHideHelp()"
     [disabled]="!this.isHelpEnabled"
     (click)="getHelp()"
   >
     Segítség
-  </button>
+  </app-generic-button>
   <div *ngFor="let help of this.displayedHelps">{{ help }}</div>
 </div>

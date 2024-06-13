@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output, input } from '@angular/core';
-import { Question } from '../data';
+import { Question, QuestionType } from '../data';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { GenericButtonComponent } from '../generic-button/generic-button.component';
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor, GenericButtonComponent],
   templateUrl: './question.component.html',
   styleUrl: './question.component.css',
 })
@@ -30,6 +31,19 @@ export class QuestionComponent {
   public finalStationReached: boolean = false;
 
   public checkAnswer() {
+    if (!this.question.type) {
+      this.question.type = QuestionType.Normal;
+    }
+    if (this.question.type === QuestionType.Inbetween) {
+      let a = +this.question.answer![0];
+      let b = +this.question.answer![1];
+      if (+this.answer >= a && +this.answer <= b) {
+        this.onCorrectAnswerSent();
+      } else {
+        this.onInCorrectAnswerSent();
+      }
+      return;
+    }
     if (
       this.question.answer?.find(
         (x) => x.toLowerCase() === this.answer.toLowerCase()
@@ -52,24 +66,41 @@ export class QuestionComponent {
 
   onInCorrectAnswerSent() {
     this.incrementAttempts();
+    this.showIncorrectAnswerText = true;
     if (this.shouldHideHelp()) {
       return;
     }
-    this.showIncorrectAnswerText = true;
+    this.isCorrectAnswer = false;
   }
 
   public shouldHideHelp(): boolean {
-    return this.question.help?.length === this.displayedHelps.length;
+    return (
+      this.question.help?.length === this.displayedHelps.length ||
+      !this.isHelpEnabled
+    );
   }
   private incrementAttempts() {
     this.currentAttempts++;
+    if (this.displayedHelps.length > 0) {
+      if (this.displayedHelps.length >= this.question.help!.length) {
+        this.isHelpEnabled = false;
+        return;
+      }
+      this.isHelpEnabled = true;
+    }
     if (this.currentAttempts >= 2) {
       this.isHelpEnabled = true;
     }
   }
 
   public getHelpRemainingText() {
+    if (!this.question.help) {
+      return '';
+    }
     if (this.currentAttempts < 2) {
+      if (this.displayedHelps.length > 0) {
+        return 'Segítség elérhető!';
+      }
       return `A következő rossz válasz után segítség érhető el.`;
     }
     return 'Segítség elérhető!';

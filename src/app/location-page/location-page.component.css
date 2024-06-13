@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.body-div{
+    background-color:#f5f5dc;
+    box-shadow: 5px 5px 5px grey;
+    margin: 50px;
+    border-radius: 20px;
+    padding: min(3vw,25px);
+    font-size: min(3vw, 24px);
+    color: #000080;
+    line-height: 1.5;
+}

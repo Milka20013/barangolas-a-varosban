@@ -1,8 +1,12 @@
-<div>
-  <h1>Leírás</h1>
+<div class="body-div">
+  <h1 style="white-space: pre-wrap; tab-size: 4; color: rgb(107, 252, 107)">
+    Leírás
+  </h1>
   <div>{{ this.locationData.baseDescription }}</div>
-  <h1>Érdekesség</h1>
-  <div>{{ this.locationData.curiosity }}</div>
+  <h1 style="color: rgb(250, 104, 216)">Érdekesség</h1>
+  <div style="white-space: pre-wrap; tab-size: 4">
+    {{ this.locationData.curiosity }}
+  </div>
   <app-question
     *ngFor="let question of this.locationData.questions; index as i"
     [question]="question"
