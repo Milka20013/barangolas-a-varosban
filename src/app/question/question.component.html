@@ -1,5 +1,5 @@
 <div>
-  <h1 style="color: orange">Leírás</h1>
+  <h1 style="color: orange">{{ isQuestion() ? "Kérdés" : "Leírás" }}</h1>
   <div style="white-space: pre-wrap; tab-size: 4">
     {{ question.description }}
   </div>
@@ -18,12 +18,19 @@
     </div>
     <div [hidden]="!showIncorrectAnswerText">
       <div style="margin: 5px">Rossz válasz.</div>
-      <div [hidden]="!isHelpEnabled" style="white-space: pre-wrap; tab-size: 4">
+      <div
+        [hidden]="!isHelpEnabled"
+        *ngIf="getHelpRemainingText()"
+        style="white-space: pre-wrap; tab-size: 4"
+      >
         {{ getHelpRemainingText() }}
       </div>
     </div>
   </div>
-  <div [hidden]="question.answer" class="w-div">
+  <div
+    [hidden]="question.answer || question.type === questionType.Last"
+    class="w-div"
+  >
     <app-generic-button (click)="moveForward()">Tovább</app-generic-button>
   </div>
 </div>
@@ -34,9 +41,15 @@
   <app-generic-button
     [hidden]="this.shouldHideHelp()"
     [disabled]="!this.isHelpEnabled"
+    style="white-space: pre-wrap; tab-size: 4"
     (click)="getHelp()"
   >
     Segítség
   </app-generic-button>
-  <div *ngFor="let help of this.displayedHelps">{{ help }}</div>
+  <div
+    *ngFor="let help of this.displayedHelps"
+    style="white-space: pre-wrap; tab-size: 4"
+  >
+    {{ help }}
+  </div>
 </div>

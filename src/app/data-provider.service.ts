@@ -1,16 +1,23 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Injectable, inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataProviderService {
+  private document = inject(DOCUMENT);
+  private localStorage;
   private teamId: number = -1;
   private inbetweenIndex: number = -1;
   public locationIndex: number = -1;
 
+  constructor() {
+    this.localStorage = this.document.defaultView!.localStorage;
+  }
+
   public getTeamId(): number {
     if (this.teamId === -1) {
-      let val = localStorage.getItem('teamId');
+      let val = this.localStorage.getItem('teamId');
       if (val) {
         return +val;
       }
@@ -21,7 +28,7 @@ export class DataProviderService {
 
   public getInbetweenIndex(): number {
     if (this.inbetweenIndex === -1) {
-      let val = localStorage.getItem('inbetweenIndex');
+      let val = this.localStorage.getItem('inbetweenIndex');
       if (val) {
         return +val;
       }
@@ -31,12 +38,11 @@ export class DataProviderService {
   }
 
   public setTeamId(id: number) {
-    localStorage.setItem('teamId', id + '');
+    this.localStorage.setItem('teamId', id + '');
     this.teamId = id;
   }
   public setInbetweenIndex(index: number) {
-    localStorage.setItem('inbetweenIndex', index + '');
+    this.localStorage.setItem('inbetweenIndex', index + '');
     this.inbetweenIndex = index;
   }
-  constructor() {}
 }

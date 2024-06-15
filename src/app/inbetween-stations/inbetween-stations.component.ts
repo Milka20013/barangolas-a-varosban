@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionComponent } from '../question/question.component';
 import { InbetweenQuestion, inbetweenQuestions } from './inbetween.data';
 import { DataProviderService } from '../data-provider.service';
+import { getNextInbetweenId } from '../data';
 
 @Component({
   selector: 'app-inbetween-stations',
@@ -32,7 +33,6 @@ export class InbetweenStationsComponent implements OnInit {
     }
     this.index = +i;
     this.question = inbetweenQuestions.find((x) => x.id === this.index)!;
-    console.log(this.question);
   }
 
   onCorrectAnswer() {
@@ -40,8 +40,11 @@ export class InbetweenStationsComponent implements OnInit {
       this.router.navigate(['location/' + this.question.locationId]);
       return;
     }
-    this.index++;
-    this.dataService.setInbetweenIndex(this.index);
-    this.router.navigate(['inbetween/' + this.index]);
+    let nextIndex = getNextInbetweenId(
+      this.dataService.getTeamId(),
+      this.index
+    );
+    this.dataService.setInbetweenIndex(nextIndex);
+    this.router.navigate(['inbetween/' + nextIndex]);
   }
 }

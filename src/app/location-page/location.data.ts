@@ -10,6 +10,10 @@ export interface LocationData {
 const birdQuestions: Question[] = [
   {
     id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `Melyik a Földön az egyetlen szárny nélküli madár?`,
     answer: ['Kivi'],
     help: [
@@ -19,7 +23,7 @@ const birdQuestions: Question[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     description: `5 szénarakás meg 7 szénarakás összehordva hány szénarakás?`,
     answer: ['1', 'egy'],
     help: [
@@ -32,6 +36,10 @@ const birdQuestions: Question[] = [
 const puzzleQuestions: Question[] = [
   {
     id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `Mely állítás hamis az alábbiak közül?\nA kirakós játékok alapvetően a gyerekek\nA.	logikai, és stratégiai gondolkodását \nB.	összpontosító, vizuális képességeit\nC.	szem-kéz-láb koordinációját\nD.	képzelőerejét\nE.	kudarctűrését \nfejleszti, segíti, alakítja.`,
     answer: ['C', 'szem-kéz-láb koordinációját'],
     help: [
@@ -47,12 +55,16 @@ Ezáltal segít-e bennünket valamilyen módon a puzzle ehhez a végtagunkhoz ka
 const buffetQuestions: Question[] = [
   {
     id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `A világ legősibb fából faragott szobra a Shigir bálvány, melyet az Urál-hegységben találtak meg. A szobor kb. 11500 éves!!!\nKözel 5 méteres fából készült totem.\nMelyik lehet az alábbi felsorolásból az igaz válasz?\na.	barlangban találták meg\nb.	csak emberarcokat ábrázol\nc.	mocsárban találták meg\nd.	csak geometriai faragások találhatóak rajta\n  `,
     answer: ['C', 'mocsárban találták meg'],
     help: ['Vizes élőhely', `Mocsár`],
   },
   {
-    id: 2,
+    id: 3,
     description: `Melyik országban található a legnagyobb, csak fából készített szobor, melyhez évente több millióan zarándokolnak.\nA szobor 23 méter magas, mely elkészítéséhez több, mint 10 fajta fát használtak fel. `,
     answer: ['Kína'],
     help: ['Buddhát ábrázolja', 'Changhua tartományban található', 'Kína'],
@@ -62,15 +74,19 @@ const buffetQuestions: Question[] = [
 const whiteTreeQuestions: Question[] = [
   {
     id: 1,
+    description: `Nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `Tegyétek sorrendbe az ismert gyermekdal szövegét:\na. Felmászott a fára.\nb. Doktor bácsi\nc. Leesett, leesett,\nd. Mókuska, mókuska,\ne. Huncut a mókus\nf. kitörött a lába.\ng. úgy is fára megy.\nh. ne gyógyítsa meg.\n(A sorok betűjeleit szóköz nélkül kell felsorolni!)`,
     answer: ['DACFBHEG'],
   },
   {
-    id: 2,
-    description: `Ügyesek voltatok, most pedig csináljátok a mókus után, a második sor nélkül!, egymást nagyban segítve!!!! a lefűrészelt tuskót\nfelhasználva, állítsátok helyre a rendellenességet, amit láttok a fán.\nHa végeztetek, nyomjatok a továbbra!`,
+    id: 3,
+    description: `Ügyesek voltatok, most pedig csináljátok a mókus után, a második sor nélkül!, egymást nagyban segítve!!!! a lefűrészelt tuskót felhasználva, állítsátok helyre a rendellenességet, amit láttok a fán.\nHa végeztetek, nyomjatok a továbbra!`,
   },
   {
-    id: 3,
+    id: 4,
     description: `Milyen irányba áll már a madáretető?`,
     answer: ['Függőleges', 'fügőleges'],
     help: [
@@ -93,26 +109,30 @@ const whiteTreeQuestions: Question[] = [
 const sportQuestions: Question[] = [
   {
     id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `Válasszatok két versenyzőt, ők lesznek, akik akár olimpiai részvételre jogosító ajánlást is szerezhetnek….\nHozzájuk válasszatok két edzőt.\nŐk négyen menjenek oda egy-egy általuk választott edzőeszközhöz és egy percen keresztül keményen hajtva használja is azt.\nEzután az edzőknek egy óra segítségével meg kell mérnie a versenyzők pulzusát!\nMiután ez megvolt, írjátok be a pulzusok átlagát (kerekítve)`,
     answer: ['60', '240'],
     help: ['Egézségesnek kell lennetek!', 'Próbáljátok meg a 100-at!'],
     type: QuestionType.Inbetween,
   },
   {
-    id: 2,
-    description: `Hajrá!\nEz remek volt!\nIsmételjetek meg!!!!\nCsak most az edző legyen a versenyző! (Természetesen választhat bármilyen más sporteszközt…)\nAzután elő az órával, és ismét pulzusmérés!\nAdjátok össze a 4 kapott értéket és átlagoljátok az eredményt!\nHa megvan az összeg, akkor írjátok be a csapatotok számát!`,
+    id: 3,
+    description: `Hajrá!\nEz remek volt!\nIsmételjétek meg!!!!\nCsak most az edző legyen a versenyző! (Természetesen választhat bármilyen más sporteszközt…)\nAzután elő az órával, és ismét pulzusmérés!\nAdjátok össze a 4 kapott értéket és átlagoljátok az eredményt!\nHa megvan az összeg, akkor írjátok be a csapatotok számát!`,
     answer: ['1', '3'],
     type: QuestionType.Inbetween,
     help: ['Mit kell beírni?'],
   },
   {
-    id: 3,
+    id: 4,
     description: `Melyik állítás az igaz?\nA. A fiataloktól az idősekig az átlagos pulzusszám növekszik a kor előrehaladtával:\n20 év - 200 átlagos pulzusszám\n30 év - 190 átlagos pulzusszám\n40 év - 185 átlagos pulzusszám\n45 év - 175 átlagos pulzusszám\n50 év - 170 átlagos pulzusszám\n\nB. Az idősektől a fiatalokig az átlagos pulzusszám növekszik a kor előrehaladtával:\n20 év - 170 átlagos pulzusszám\n30 év - 175 átlagos pulzusszám\n40 év - 185 átlagos pulzusszám\n45 év - 190 átlagos pulzusszám\n50 év - 200 átlagos pulzusszám\n\nC. A fiataloktól az idősekig az átlagos pulzusszám állandó a kor előrehaladtával:\n20 év - 185 átlagos pulzusszám\n30 év - 185 átlagos pulzusszám\n40 év - 185 átlagos pulzusszám\n45 év - 185 átlagos pulzusszám\n50 év - 185 átlagos pulzusszám`,
     answer: ['A'],
     help: ['Bizony nem mindig növekszik valami a kor előrehaladtával…'],
   },
   {
-    id: 4,
+    id: 5,
     description: `Aki olvasta a Harry Potter könyveket, jól tudja, hogy mi is az a quidditch, vagy ahogyan magyarosan ejtjük: kviddics.\nEz a játék, ma már nem csak egy elismert sport, hanem bajnokságot és világbajnokságot is rendeznek belőle.\n\nA. Ezt nem igaz, hisz fizikailag kivitelezhetetlen.\nB. Persze, hogy igaz, ma már minden őrület valósággá válik.\nC. Már az állítás sem igaz…`,
     answer: ['B'],
     help: [
@@ -124,6 +144,10 @@ const sportQuestions: Question[] = [
 const beeQuestions: Question[] = [
   {
     id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `A méhek azért szeretik a bugás csörgőfa virágát, mert\na. sárga a virága, könnyen észrevehető, ez jobban vonzza őket.\nb. sokáig virágzik, így több ideig meg lehet találni a természetben.\nc. A nektárja nagyon csábító, hisz ez a méhek végső célja.`,
     answer: ['C'],
     help: [
@@ -132,21 +156,13 @@ const beeQuestions: Question[] = [
     ],
   },
   {
-    id: 2,
-    description: `Melyik a hamis állítás az alábbi felsorolásból?\n1. A méhek lényegében táncolva kommunikálnak egymással, amit azt jelenti, hogyha egy méh talál egy távolabbi\nnektárforrást, akkor a kaptárhoz visszatérve, tánccal tájékoztatja a társait\n2. A délszláv háború egyes aknáit méhekkel szerették volna felderíteni, hiszen a virágok illata mellett a TNT robbanóanyag\nszagát is érzékelik a rovarok, de nem jártak kézzel fogható sikerrel.\n3. Ha méhecskével találkozunk, az szinte kivétel nélkül nőstény lehet, hiszen a hímek általában a kaptárban vannak, hogy\negyetlen életcéljukat - a méhkirálynő megtermékenyítését - beteljesítsék.\n4. A méhek testsúlyok kb. 80%-át is képesek „cipelni”, vagyis egy méhecske akár a testsúlyának 80%-át is képes virágpor és\nnektár formájában magával vinni a kaptárba. Mindezt naponta akár többször is megteszik, vagyis igazi testépítők is\nlehetnének, hiszen folyamatosan súllyal dolgoznak.\n5. Habár azt hihetjük, hogy a méhek - a medvéhez hasonlóan - télen alszanak, ez nem teljesen igaz, hiszen ilyenkor\nvisszavonulnak a kaptárjukba, a méhkirálynő körül csoportosulnak össze és a repülőizmaikat rezegtetve fűtik fel kaptárukat.`,
-    answer: ['3'],
-    help: [
-      `A méhecskék nem mind nőstények...`,
-      `Ez az egyetlen hamis állítás a listában.`,
-    ],
-  },
-  {
     id: 3,
-    description: `Mi a méhek életcélja?\na. Mézet gyűjteni és a méhkirálynő megtermékenyítése.\nb. A kaptár védelme és a mézkészlet gyarapítása.\nc. A méhsejtek építése és a mézkészlet gyarapítása.`,
-    answer: ['C'],
+    description: `Melyik a hamis állítás az alábbi felsorolásból?\n1. A méhek lényegében táncolva kommunikálnak egymással, amit azt jelenti, hogyha egy méh talál egy távolabbi\nnektárforrást, akkor a kaptárhoz visszatérve, tánccal tájékoztatja a társait\n2. A délszláv háború egyes aknáit méhekkel szerették volna felderíteni, hiszen a virágok illata mellett a TNT robbanóanyag\nszagát is érzékelik a rovarok, de nem jártak kézzel fogható sikerrel.\n3. Ha méhecskével találkozunk, az szinte kivétel nélkül nőstény lehet, hiszen a hímek általában a kaptárban vannak, hogy\negyetlen életcéljukat - a méhkirálynő megtermékenyítését - beteljesítsék.\n4. A méhek testsúlyok kb. 80%-át is képesek „cipelni”, vagyis egy méhecske akár a testsúlyának 80%-át is képes virágpor és\nnektár formájában magával vinni a kaptárba. Mindezt naponta akár többször is megteszik, vagyis igazi testépítők is\nlehetnének, hiszen folyamatosan súllyal dolgoznak.\n5. Habár azt hihetjük, hogy a méhek - a medvéhez hasonlóan - télen alszanak, ez nem teljesen igaz, hiszen ilyenkor\nvisszavonulnak a kaptárjukba, a méhkirálynő körül csoportosulnak össze és a repülőizmaikat rezegtetve fűtik fel kaptárukat.`,
+    answer: ['2'],
     help: [
-      `Gondoljatok arra, mi a legfontosabb teendőjük!`,
-      `A mézkészlet gyarapítása és a kaptár építése az elsődleges céljuk.`,
+      `A méhek nem a színek alapján tájékozódnak.`,
+      `A méhek nem idomíthatóak, de a szaglásuk kiváló!`,
+      `b. válasz, bizony bevetették őket, és a Horvát és bosznia-hercegovinai tudósok évek óta igyekeznek a módszert jobbá tenni, amelynek lényege, hogy drónokkal figyelik a méhek repüléseit. Habár a részletes eredményre még várni kell, de a méhek csoportosulása és azon aknák helyzete, amelyet ismertek, egymással összefüggésben lehetnek.`,
     ],
   },
 ];
@@ -154,6 +170,10 @@ const beeQuestions: Question[] = [
 const millQuestions: Question[] = [
   {
     id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
     description: `Melyik lehet az alábbi felsorolásból az igaz állítás?\na. A madarakra az épületek és az épületek üvegfelületei a legveszélyesebbek.\nb. A világ legnagyobb szélturbinája egy fordulatból kitermeli egy kisebb település egynapnyi energiaszükségletét.\nc. A szélenergia legnagyobb hátránya a szél kiszámíthatatlansága, ezért építik minél magasabbra a szélturbinákat.\nd. Egy vizsgálat segítségével állapították meg, hogy a szélturbina négy fehér lapátja közül hármat feketére festenek, akkor 72 százalékkal csökkenti az elhullott madarak számát.`,
     answer: ['A'],
     help: [
@@ -190,6 +210,49 @@ const snailQuestions: Question[] = [
     id: 4,
     description: `Ezzel még nem végeztetek,\nmert nem messze egy másik pöttyöset is megnézhettek!\nGyorsan számoljátok meg azt is, és annak a számát írjátok ide meg:`,
     answer: ['20', '25'],
+    type: QuestionType.Inbetween,
+  },
+];
+
+const chessQuestions: Question[] = [
+  {
+    id: 1,
+    description: `Ha elolvastátok, nyomjatok tovább!`,
+  },
+  {
+    id: 2,
+    description: `Melyik lehet az alábbi felsorolásból a hamis válasz?
+a. Segíthet az Alzheimer-kór szembeni küzdelemben.
+b. A leggyorsabb, legkevesebb lépésből adott mattot a fekete figurával játszó játkos adhatja, mégpedig 3 lépésben az ellenfelének.
+c. A lépések variációja, emberi léptékben, „végtelen számú”.
+d. A vakon sakkozás szabálya szerint, a játékos egyszersem láthatja a sakktáblát a játék ideje alatt.
+Ennek a játékmódnak a rekordját egy magyar játékos tartja, aki egyszerre 52 ellenféllel játszott vakon, ezek közül ráadásul 31-et le is győzött.`,
+    answer: ['b'],
+    help: ['A 8 köbgyöke', 'Egy pár', '2 (b)'],
+  },
+];
+
+const snailQuestions2: Question[] = [
+  {
+    id: 1,
+    description: `Kicsi, törékeny, már az időjárás is kikezdte, de büszkén halad a végtelenbe…. és tovább!
+Nektek nem is lesz nehéz a feladat, meg kell számolnotok a pontokat!
+Meg bizony, de nem kell megijednetek, nem kell a pontos összeget.
+Megelégszünk, ha körülbelül helyesen számoltok, és bizony elfogadjuk majd a számotok.
+`,
+  },
+  {
+    id: 2,
+    description: `Nos, mennyit számoltatok?
+De ne feledjétek itt akárhol is lehet pötty,
+elöl-hátul, alul felül,
+és akár még bármelyik oldalon!`,
+    answer: ['350', '450'],
+    help: [
+      'A 300-as szám arra buzdít, hogy ne engedjük, hogy az egyértelműség hiánya visszatartson minket. Nos, ne is tartson vissza, mert ez a szám kevés…\n',
+      '500 nap nyár című, 2009-es amerikai romantikus vígjáték nagyon sok mindenkinek tetszett (7,5/10), persze, hisz játszott benne Joseph Gordon-Levitt, de ez a szám már túl sok…\n',
+      'Kb. 380 és 420 között van a valóság….\n',
+    ],
     type: QuestionType.Inbetween,
   },
 ];
@@ -244,5 +307,19 @@ mivel e növényfaj mérgező a szarvasmarhák számára.\n*   A népi megfigyel
     baseDescription: `A legnagyobb méretű házas csigafaj Európában az éticsiga. Magyarországon kívül őshonos még Ausztriában, Belgiumban, Csehországban, Kelet-Franciaországban, Észak-Olaszországban, Németországban, Hollandiában, Lengyelországban, Nyugat- Oroszországban, Szlovákiában, Szlovéniában, Ukrajnában, Romániában és a délkelet-európai országokban. Körülbelül 43 000 csigafaj létezik a világon. Egy kifejlett példány háza átlagosan 45 mm átmérőjű. Teste egy fejből, egy lábból és a zsigerzacskóból áll. A fején két pár tapogató van, a felsőkön ülnek a szemek. A csiga szuperereje, hogy nemcsak a felső tapogatóját tudja visszahúzni, de tulajdonképpen egy pillanat alatt az egész testét begyűri a házába, amikor veszélyt érez. A csigahéjat mész és egy a conchyolin nevű fehérje alkotja. Két rétegből áll, és a köpenymirigyek termelik. A legtöbb csigahéj jobbra csavarodik – az irány egyébként anyai ágon öröklődik.`,
     curiosity: `Svédországba, Norvégiába és Finnországba a középkorban a szerzetesek telepítették be. Akkoriban azért szerették különösen a csigát, mert böjti időszakban lehetett enni, ugyanis nem húsnak, hanem halnak tekintették. Ahogy a neve is mutatja, az éticsigát megeszik – és nem, nem csak a franciák (csigapörkölt, csigapaella…). Itthon áprilistól június közepéig lehet gyűjteni, de kizárólag engedéllyel. Az év többi részében ez tilos, ráadásul az éticsiga védett is, a természetvédelmi értéke 2000 Ft/darab!`,
     questions: snailQuestions,
+  },
+  {
+    id: 10,
+    baseDescription: `A sakk nagyjából kétezer évvel ezelőtt Indiából indult el hódító útjára. Egy népszerű legenda szerint Shehram hindu király bölcs tanácsadója, Sessa ebn Daher találta ki ura unalmának elűzésére. A tudós mindössze annyit kért jutalmul az uralkodótól, hogy a sakktábla első négyzetére tegyenek egy szem búzát, a másodikra annak kétszeresét, azaz kettő szemet, a harmadikra szintén az előző kétszeresét, s így tovább. A király örömmel teljesítette volna a szerény kérést, ám kiderült, hogy a világon nincs annyi búzaszem összesen, amennyi a hatvannégy kockára jutott volna: több mint 18 trillió - egészen pontosan 18 446 744 073 709 551 615 - búzaszemet kellett volna elhelyezni a táblán, ennyi az egész világon összesen nincs!!!!`,
+    curiosity: `A világon a legkisebb sakktábla egy pecsétgyűrű, ami elefántcsontból és ezüstből készült, benne ici-pici bábukkal, a játékához bizony csipesz és nagyító is ajánlott! A világ legnagyobb sakktáblája egy norvég városban, Brekstadban található, 80m2, ahol a legenda szerint darukkal mozgatják a bábukat.`,
+    questions: chessQuestions,
+  },
+  {
+    id: 11,
+    baseDescription: `A legtöbb élőlényhez hasonlóan a szárazföldi és vízi csigafajok is léteznek. Latin nevük alapján a szakirodalomban haslábúak néven is ismertek, ugyanis hasuk ellaposodott, erőteljes bőrizomtömlővel ellátott testrész. Körülbelül 43 000 csigafaj létezik. A csigák közül van, ami csak 5 évig él, de kis szerencsével akár 25 évig is élhetnek. A csigák az egyik leglassabb lények a bolygón, szinte teljesen vakok, de remek a szaglásuk, ellenben teljesen süketek.`,
+    curiosity: `Egyes helyeken az emberek csigatojást esznek, és 'fehér kaviárnak' nevezik.
+A tengeri csiga legnagyobb élő faja a Syrinx aruanus, melynek héja elérheti a 90 cm hosszúságot és a 18 kg-ot is.
+A tengeri csiga a világ egyik leghalálosabb lénye, egyetlen szúrásával halált is okozhat.`,
+    questions: snailQuestions2,
   },
 ];

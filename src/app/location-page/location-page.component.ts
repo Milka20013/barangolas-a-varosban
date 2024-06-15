@@ -5,6 +5,7 @@ import { LocationData, LocationDatas } from './location.data';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionComponent } from '../question/question.component';
 import { DataProviderService } from '../data-provider.service';
+import { getNextInbetweenId } from '../data';
 
 @Component({
   selector: 'app-location-page',
@@ -34,7 +35,11 @@ export class LocationPageComponent implements OnInit {
     this.questionIndex++;
     if (this.locationData.questions.length === this.questionIndex) {
       this.router.navigate([
-        'inbetween/' + (this.dataService.getInbetweenIndex() + 1),
+        'inbetween/' +
+          getNextInbetweenId(
+            this.dataService.getTeamId(),
+            this.dataService.getInbetweenIndex()
+          ),
       ]);
       return;
     }
